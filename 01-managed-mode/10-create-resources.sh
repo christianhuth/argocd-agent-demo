@@ -2,6 +2,11 @@
 
 source .env
 
+# Create a random server.secretkey
+kubectl patch secret argocd-secret -n $NAMESPACE_NAME \
+  --context kind-$AGENT_CLUSTER_NAME \
+  --patch='{"data":{"server.secretkey":"'$(openssl rand -base64 32 | base64 -w 0)'"}}'
+
 # Propagate a default AppProject from principal to the agent
 kubectl patch appproject default -n $NAMESPACE_NAME \
   --context kind-$PRINCIPAL_CLUSTER_NAME --type='merge' \
@@ -34,6 +39,10 @@ spec:
     server: https://$PRINCIPAL_EXTERNAL_IP:$PRINCIPAL_NODE_PORT?agentName=$AGENT_APP_NAME
     namespace: guestbook
   syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
 EOF
