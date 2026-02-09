@@ -41,8 +41,16 @@ SVC CIDR: 10.97.0.0/12         SVC CIDR: 10.98.0.0/12...
 
 ```bash
 cd 01-managed-mode
+./00-start-cloud-provider-for-kind.sh
 ./01-create-control-plane-cluster.sh
 ./02-create-workload-cluster.sh
 ./03-create-namespaces.sh
 ./04-install-argo-cd.sh
+./05-initialize-ca.sh
+./06-install-principal.sh
+./07-pki-setup-for-principal.sh
+./08-create-agent-configuration.sh
+./09-install-agent.sh
+./10-create-resources.sh
+./11-access-argo-cd.sh
 ```
