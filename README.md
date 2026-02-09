@@ -44,4 +44,5 @@ cd 01-managed-mode
 ./01-create-control-plane-cluster.sh
 ./02-create-workload-cluster.sh
 ./03-create-namespaces.sh
+./04-install-argo-cd.sh
 ```
