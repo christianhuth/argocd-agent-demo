@@ -1,6 +1,6 @@
 # Argo CD Agent
 
-A small demo of Argo CD Agent in **managed** mode.
+A small demo of Argo CD Agent mode.
 
 ## Prerequisistes
 
@@ -37,9 +37,11 @@ SVC CIDR: 10.97.0.0/12         SVC CIDR: 10.98.0.0/12...
 └─────────────────────┘
 ```
 
-## Demo
+## Demo of the **managed** Mode
 
 ```bash
+cd 01-managed-mode
 ./01-create-control-plane-cluster.sh
 ./02-create-workload-cluster.sh
+./03-create-namespaces.sh
 ```
